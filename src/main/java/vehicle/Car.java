@@ -1,0 +1,3 @@
+public abstact class Car {
+    
+}
