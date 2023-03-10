@@ -1,3 +1,3 @@
-public abstact class Car {
+public abstract class Car {
     
 }
