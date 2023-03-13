@@ -28,17 +28,6 @@ public abstract class Car {
 
     public abstract void drive(double miles);
 
-public String toString()
-public double getMileage()
-public String getMake()
-public String getModel()
-public abstract double getRemainingRange()
-
-@throws IllegalArgumentException 
-protected void addMileage(double miles);
-
-@throws IllegalArgumentException 
-public int roadTrip(List<Double> milesEachDay)
     public String toString() {
         return ("%s and %s (%f mi)", mke, mdl, mlg);
     }
