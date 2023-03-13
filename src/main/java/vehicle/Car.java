@@ -14,7 +14,9 @@ public double getMileage()
 public String getMake()
 public String getModel()
 public abstract double getRemainingRange()
+
 @throws IllegalArgumentException 
 protected void addMileage(double miles);
+
 @throws IllegalArgumentException 
 public int roadTrip(List<Double> milesEachDay)
