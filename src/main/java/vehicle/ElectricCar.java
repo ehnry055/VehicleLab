@@ -1,6 +1,7 @@
 package vehicle;
 public abstract class ElectricCar extends Car {
     double milesOnMaxCharge;
+    double mileage;
     double charge;
     /**
      * Note: Car begins with a full charge (and thus range).
@@ -10,14 +11,12 @@ public abstract class ElectricCar extends Car {
     public ElectricCar(String make, String model, double startingMileage, double milesOnMaxCharge) {
         super(make, model, startingMileage);
         this.milesOnMaxCharge = milesOnMaxCharge;
+        mileage = startingMileage;
         charge = milesOnMaxCharge;
         if (milesOnMaxCharge < 0){
             throw new IllegalArgumentException();
         }
-
-
     }
-
     /**
      * Defaults mileage to 0.
      * 
@@ -26,8 +25,6 @@ public abstract class ElectricCar extends Car {
     public ElectricCar(String make, String model, double milesOnMaxCharge) {
         super(make,model);
         this.milesOnMaxCharge = milesOnMaxCharge;
-
-        
     }
 
     /**
@@ -37,6 +34,7 @@ public abstract class ElectricCar extends Car {
      * @throws IllegalArgumentException if miles is too high given the current charge.
      */
     public void drive(double miles) {
+        mileage += miles;
         if (miles < 0 || miles > getRemainingRange()){
             throw new IllegalArgumentException();
         }

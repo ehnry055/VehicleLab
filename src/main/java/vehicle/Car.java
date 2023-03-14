@@ -16,7 +16,6 @@ public abstract class Car {
         startingMileage = 0;
     }
 
-<<<<<<< Updated upstream
     public boolean canDrive(double miles) {
         if (miles < 0) {
             throw new IllegalArgumentException();
@@ -28,13 +27,6 @@ public abstract class Car {
     }
 
     public abstract void drive(double miles);
-=======
-public Car(String make, String model)
-@throws IllegalArgumentException 
-public boolean canDrive(double miles)
-@throws IllegalArgumentException 
-public abstract void drive(double miles)
->>>>>>> Stashed changes
 
     public String toString() {
         return ("%s and %s (%f mi)", mke, mdl, mlg);
