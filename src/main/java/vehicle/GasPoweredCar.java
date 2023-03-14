@@ -6,18 +6,18 @@ public abstract class GasPoweredCar extends Car {
     private double cap;
 
     public GasPoweredCar(String make, String model, double startingMileage, double mpg, double fuelCapacityGallons) {
+        super(make, model, startingMileage);
         if (mpg < 0 || fuelCapacityGallons < 0) {
             throw new IllegalArgumentException();
         }
-        super.Car(make, model, startingMileage);
-
+    
         per = mpg;
         tank = fuelCapacityGallons;
         cap = fuelCapacityGallons;
 
     }
     public GasPoweredCar (String make, String model, double mpg, double fuelCapacityGallons) {
-        this.GasPoweredCar(make, model, 0, mpg, fuelCapacityGallons);
+        this(make, model, 0, mpg, fuelCapacityGallons);
     }
 
     public void drive(double miles) {

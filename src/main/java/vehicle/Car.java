@@ -1,5 +1,7 @@
 package vehicle;
 
+import java.util.List;
+
 public abstract class Car {
     private String mke;
     private String mdl;
@@ -15,7 +17,7 @@ public abstract class Car {
     }
     
     public Car(String make, String model) {
-        this.Car(make, model, 0);
+        this(make, model, 0);
     }
 
     public boolean canDrive(double miles) {
@@ -31,7 +33,7 @@ public abstract class Car {
     public abstract void drive(double miles);
 
     public String toString() {
-        return ("%s and %s (%f mi)", mke, mdl, mlg);
+        return String.format("%s and %s (%f mi)", mke, mdl, mlg);
     }
 
     public double getMileage() {
