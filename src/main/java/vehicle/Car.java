@@ -3,7 +3,7 @@ package vehicle;
 public abstract class Car {
     private String mke;
     private String mdl;
-    private Double mlg;
+    protected Double mlg;
 
     public Car(String make, String model, double startingMileage) {
         if (startingMileage < 0) {

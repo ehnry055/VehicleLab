@@ -1,8 +1,5 @@
 package vehicle;
 public abstract class GasPoweredCar extends Car {
-    private String mke;
-    private String mdl;
-    private double mlg;
     private double per;
     private double tank;
     private double cap;
@@ -11,9 +8,8 @@ public abstract class GasPoweredCar extends Car {
         if (mpg < 0 || fuelCapacityGallons < 0) {
             throw new IllegalArgumentException();
         }
-        mke = make;
-        mdl = model;
-        mlg = startingMileage;
+        super.Car(make, model, startingMileage);
+
         per = mpg;
         tank = fuelCapacityGallons;
         cap = fuelCapacityGallons;
@@ -23,9 +19,7 @@ public abstract class GasPoweredCar extends Car {
         if (mpg < 0 || fuelCapacityGallons < 0) {
             throw new IllegalArgumentException();
         }
-        mke = make;
-        mdl = model;
-        mlg = 0;
+        super.Car(make, model, 0);
         per = mpg;
         tank = fuelCapacityGallons;
         cap = fuelCapacityGallons;
