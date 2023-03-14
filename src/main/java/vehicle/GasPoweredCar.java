@@ -21,8 +21,8 @@ public abstract class GasPoweredCar extends Car {
     }
 
     public void drive(double miles) {
-        mlg += miles;
-        tank -= (miles / per); 
+        super.addMileage(miles);
+        decreaseFuelLevel(miles);
     }
 
     public double getMPG() {
