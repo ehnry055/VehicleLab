@@ -1,6 +1,6 @@
 package vehicle;
 
-public class ChevroletBird extends ElectricCar {
+public class ChevroletBird extends ElectricCar implements Flying{
     double fullcharge = 250;
     boolean wings = false;
     /** Chevrolet Birds have a 250 mile range on a full charge. They
