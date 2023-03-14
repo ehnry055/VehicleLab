@@ -34,10 +34,10 @@ public abstract class ElectricCar extends Car {
      * @throws IllegalArgumentException if miles is too high given the current charge.
      */
     public void drive(double miles) {
-        mileage += miles;
         if (miles < 0 || miles > getRemainingRange()){
             throw new IllegalArgumentException();
         }
+        addMileage(miles);
     }
 
     /**

@@ -32,4 +32,16 @@ public class ChevroletBird extends ElectricCar implements Flying{
             fullcharge -= miles;
         }
     }
+
+    public boolean canFly(double miles) {
+        if (miles < 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void fly(double miles) {
+
+    }
+
+
 }
