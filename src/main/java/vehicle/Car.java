@@ -1,3 +1,5 @@
+package vehicle;
+
 public abstract class Car {
     private String mke;
     private String mdl;
@@ -13,7 +15,7 @@ public abstract class Car {
     }
     
     public Car(String make, String model) {
-        startingMileage = 0;
+        this.Car(make, model, 0);
     }
 
     public boolean canDrive(double miles) {
