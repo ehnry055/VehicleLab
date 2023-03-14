@@ -1,4 +1,5 @@
 package vehicle;
+
 public abstract class GasPoweredCar extends Car {
     private double per;
     private double tank;
@@ -16,13 +17,7 @@ public abstract class GasPoweredCar extends Car {
 
     }
     public GasPoweredCar (String make, String model, double mpg, double fuelCapacityGallons) {
-        if (mpg < 0 || fuelCapacityGallons < 0) {
-            throw new IllegalArgumentException();
-        }
-        super.Car(make, model, 0);
-        per = mpg;
-        tank = fuelCapacityGallons;
-        cap = fuelCapacityGallons;
+        this.GasPoweredCar(make, model, 0, mpg, fuelCapacityGallons);
     }
 
     public void drive(double miles) {
