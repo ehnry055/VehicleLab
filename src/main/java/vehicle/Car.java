@@ -33,7 +33,7 @@ public abstract class Car {
     public abstract void drive(double miles);
 
     public String toString() {
-        return String.format("%s and %s (%f mi)", mke, mdl, mlg);
+        return String.format("%s and %s (%.1f mi)", mke, mdl, mlg);
     }
 
     public double getMileage() {
