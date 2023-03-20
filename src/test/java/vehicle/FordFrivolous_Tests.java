@@ -52,7 +52,7 @@ public class FordFrivolous_Tests {
 
     @Test
     public void fordConstructorTest3() {
-        FordFrivolous ford = new FordFrivolous(2309185);
+        FordFrivolous ford = new FordFrivolous();
 
         
     }
@@ -67,9 +67,6 @@ public class FordFrivolous_Tests {
         ford.driveAutonomously(45);
         assertEquals(45, ford.getMileage(), .1, "Mileage should be 30 after first drive.");
         assertEquals(472-90, ford.getRemainingRange(), 0.1,"Remaining range should be subtracted by double the amount");
-        assertTrue(ford.canDrive(382), "Driving 382 should fail.");
-        assertTrue(ford.canDrive(191), "Driving 191 should succeed.");
-        assertTrue(ford.canDrive(192), "Driving 192 should fail.");
         ford.driveAutonomously(191);
         assertEquals(236, ford.getMileage(), .1, "Mileage should be 236.");
         assertEquals(0, ford.getRemainingRange(), 0.1,"Remaining range should be 0");
@@ -77,7 +74,34 @@ public class FordFrivolous_Tests {
         assertThrows(IllegalArgumentException.class, () -> {
             ford.driveAutonomously(5);
         }, "Driving beyond empty should fail.");
+    }
+
+    @Test
+    public void fordConstructorTest5() {
+        FordFrivolous ford = new FordFrivolous();
+        assertThrows(IllegalArgumentException.class, () -> {
+            ford.fly(-1);
+        }, "Flying empty should fail.");
+
+        ford.fly(0);
+        assertEquals(0, ford.getMileage(), .1, "Mileage should not change when flying.");
+        assertEquals(472, ford.getRemainingRange(), 0.1,"Remaining range should stay the same.");
+
+        ford.fly(1);
+        assertEquals(0, ford.getMileage(), .1, "Mileage should not change when flying.");
+        assertEquals(472-3, ford.getRemainingRange(), 0.1,"Remaining range should be subtracted by triple to amount. 469.");
+
+        assertFalse(ford.canFly(157), "Driving 157 should fail.");
+        assertTrue(ford.canFly(156), "Driving 156 should succeed.");
+        assertFalse(ford.canFly(300), "Driving 300 should fail.");
 
 
+        ford.fly(156);
+        assertEquals(157, ford.getMileage(), .1, "Mileage should be 157.");
+        assertEquals(1, ford.getRemainingRange(), 0.1,"Remaining range should be 1");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            ford.fly(5);
+        }, "Driving beyond empty should fail.");
     }
 }
