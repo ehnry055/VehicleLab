@@ -29,8 +29,8 @@ public class FordFrivolous_Tests {
             ford.drive(-1);
         }, "Driving mileage cannot be negative.");
 
-       assertTrue(ford.canDrive(30), "canDrive should be true");
-       ford.drive(30);
+        assertTrue(ford.canDrive(30), "canDrive should be true");
+        ford.drive(30);
         assertEquals(30, ford.getMileage(), .1, "Mileage should be 30 after first drive.");
 
         ford.drive(200);
@@ -43,7 +43,7 @@ public class FordFrivolous_Tests {
         assertTrue(ford.canDrive(242), "Driving 242 should succeed.");
 
         ford.drive(242);
-        assertEquals(472, ford.getMileage(), .1, "Mileage should be 481 after third drive.");
+        assertEquals(472, ford.getMileage(), .1, "Mileage should be 472 after third drive.");
 
         assertThrows(IllegalArgumentException.class, () -> {
             ford.drive(5);
@@ -52,9 +52,34 @@ public class FordFrivolous_Tests {
 
     @Test
     public void fordConstructorTest3() {
-        FordFrivolous ford = new FordFrivolous();
+        FordFrivolous ford = new FordFrivolous(500);
+        assertEquals(0, ford.getMileage(), 0.1, "Mileage should be 500.");
+        assertEquals(20, ford.getFuelCapacity(),  0.1, "Initial fuel capacity not correct.");
+        assertEquals(ford.getFuelCapacity(), ford.getFuelLevel(), 0.1, "The car should begin full.");
+        assertEquals(23.6, ford.getMPG(), 0.1, "Initial mpg not correct.");
+        assertEquals(ford.getFuelCapacity() * ford.getMPG(), ford.getRemainingRange(), 0.1,
+                "Remaining range of car not correct at creation.");
+        assertEquals("Ford Frivolous (500.0 mi)", ford.toString(), "toString does not match");
+    
+        assertTrue(ford.canDrive(30), "canDrive should be true");
+        ford.drive(30);
+        assertEquals(530, ford.getMileage(), .1, "Mileage should be 530 after first drive.");
 
-        
+        ford.drive(200);
+        assertEquals(730, ford.getMileage(), .1, "Mileage should be 230 after second drive.");
+
+        assertEquals(ford.getFuelCapacity() * ford.getMPG() - 230, ford.getRemainingRange(), .1,
+                "Remaining range of car not correct after driving twice.");
+
+        assertFalse(ford.canDrive(243), "Driving 243 should fail.");
+        assertTrue(ford.canDrive(242), "Driving 242 should succeed.");
+
+        ford.drive(242);
+        assertEquals(972, ford.getMileage(), .1, "Mileage should be 972 after third drive.");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            ford.drive(5);
+        }, "Driving beyond empty should fail.");
     }
 
     @Test
