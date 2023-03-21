@@ -24,7 +24,7 @@ public abstract class Car {
         if (miles < 0) {
             throw new IllegalArgumentException();
         }
-        if (mlg - miles < 0) {
+        if (miles > getRemainingRange()) {
             return false;
         }
         return true;
