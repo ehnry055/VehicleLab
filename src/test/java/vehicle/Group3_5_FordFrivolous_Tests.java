@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class FordFrivolous_Tests {
+public class Group3_5_FordFrivolous_Tests {
 
     @Test
     public void fordConstructorTest1() {
