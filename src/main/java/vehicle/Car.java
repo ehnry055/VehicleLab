@@ -20,7 +20,7 @@ public abstract class Car {
         this(make, model, 0);
     }
 
-    public boolean canDrive(double miles) {
+    public boolean canDrive(double miles) throws IllegalArgumentException{
         if (miles < 0) {
             throw new IllegalArgumentException();
         }
@@ -54,7 +54,7 @@ public abstract class Car {
         mlg += miles;
     }
     //dont know if this workssssssssss
-    public int roadTrip(List<Double> milesEachDay) {
+    public int roadTrip(List<Double> milesEachDay) throws IllegalArgumentException {
         Double remain = mlg;
         int i = 0;
         for(Double d : milesEachDay) {

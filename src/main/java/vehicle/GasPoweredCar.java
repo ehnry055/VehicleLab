@@ -20,7 +20,7 @@ public abstract class GasPoweredCar extends Car {
         this(make, model, 0, mpg, fuelCapacityGallons);
     }
 
-    public void drive(double miles) {
+    public void drive(double miles) throws IllegalArgumentException {
         if (miles < 0 || miles > getRemainingRange()) {
             throw new IllegalArgumentException();
         }
@@ -48,7 +48,7 @@ public abstract class GasPoweredCar extends Car {
         return tank * per;
     }
 
-    public void refillTank(double gallons) {
+    public void refillTank(double gallons) throws IllegalArgumentException {
         if(gallons < 0 || tank + gallons > cap) {
             throw new IllegalArgumentException();
         }

@@ -13,7 +13,7 @@ public class Group3_5_ChevroletBird_Tests {
         assertEquals(0, bird.getMileage(), 0.1, "Default mileage should be zero.");
         assertEquals(250, bird.getRemainingRange(),  0.1, "Initial charge not correct.");
         assertEquals(bird.getMaxRange(), bird.getRemainingRange(), 0.1, "The car should begin full.");
-        assertEquals("Bird Chevrolet (0.0 mi)", bird.toString(), "toString does not match");
+        assertEquals("Chevrolet Bird (0.0 mi)", bird.toString(), "toString does not match");
     }
 
     @Test
@@ -25,7 +25,7 @@ public class Group3_5_ChevroletBird_Tests {
         assertEquals(250, bird.getRemainingRange(),  0.1, "Initial charge should be 250.");
         assertEquals("Chevrolet", bird.getMake(), "Should return 'Chevrolet' as the make.");
         assertEquals("Bird", bird.getModel(), "Should return 'Bird' as the model.");
-        assertEquals("Bird Chevrolet (0.0 mi)", bird.toString(), "toString does not match");
+        assertEquals("Chevrolet Bird (500.0 mi)", bird.toString(), "toString does not match");
         assertFalse(bird.checkWingsExtended(), "Should begin as closed.");
     }
 
@@ -48,7 +48,7 @@ public class Group3_5_ChevroletBird_Tests {
         bird.drive(200);
         assertEquals(230, bird.getMileage(), .1, "Mileage should be 230 after second drive.");
 
-        assertEquals(bird.getMaxRange() - 230, bird.getRemainingRange(), .1,
+        assertEquals(250 - 230, bird.getRemainingRange(), .1,
                 "Remaining range of car not correct after driving twice.");
 
         assertFalse(bird.canDrive(21), "Driving 21 should fail.");
@@ -84,7 +84,7 @@ public class Group3_5_ChevroletBird_Tests {
     public void birdFlying() {
         ChevroletBird bird = new ChevroletBird();
         assertThrows(IllegalArgumentException.class, () -> {
-            bird.drive(-1);
+            bird.fly(-1);
         }, "Flying cannot be negative.");
 
         bird.fly(0);
@@ -107,7 +107,7 @@ public class Group3_5_ChevroletBird_Tests {
             bird.fly(2);
         }, "Flying beyond empty should fail.");
 
-        bird.drive(1);
+        bird.fly(1);
         assertEquals(0, bird.getRemainingRange(), 0.1, "Range should be now empty.");
     }
 }

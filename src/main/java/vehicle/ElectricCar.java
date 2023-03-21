@@ -38,6 +38,7 @@ public abstract class ElectricCar extends Car {
             throw new IllegalArgumentException();
         }
         addMileage(miles);
+        decreaseCharge(miles);
     }
 
     /**
@@ -63,7 +64,7 @@ public abstract class ElectricCar extends Car {
      * of miles passed as an argument.
      */
     protected void decreaseCharge(double miles) {
-        charge = milesOnMaxCharge - miles;
+        charge -= miles;
     }
 }
 

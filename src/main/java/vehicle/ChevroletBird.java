@@ -29,14 +29,17 @@ public class ChevroletBird extends ElectricCar implements Flying{
     public void drive(double miles) {
         wings = false;
         super.drive(miles);
-        fullcharge -= miles;
     }
 
     public boolean canFly(double miles) {
         if (miles < 0) {
             throw new IllegalArgumentException();
-        } else{
+        }
+        if (getRemainingRange() >= miles) {
             return true;
+        }
+        else {
+            return false;
             }
         } 
 
@@ -45,10 +48,10 @@ public class ChevroletBird extends ElectricCar implements Flying{
     range of the car.
     */
     public void fly(double miles) {
-        wings = true;
-        if (miles < 0 || miles > fullcharge) {
+        if (miles < 0 || miles > getRemainingRange()) {
             throw new IllegalArgumentException();
         }
-        fullcharge -= miles;
+        wings = true;
+        decreaseCharge(miles);
     }
 }

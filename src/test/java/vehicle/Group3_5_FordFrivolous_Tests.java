@@ -97,7 +97,7 @@ public class Group3_5_FordFrivolous_Tests {
         }, "Driving beyond empty should fail.");
 
         ford.driveAutonomously(45);
-        assertEquals(45, ford.getMileage(), .1, "Mileage should be 30 after first drive.");
+        assertEquals(45, ford.getMileage(), .1, "Mileage should be 45 after first drive.");
         assertEquals(472-90, ford.getRemainingRange(), 0.1,"Remaining range should be subtracted by double the amount");
         ford.driveAutonomously(191);
         assertEquals(236, ford.getMileage(), .1, "Mileage should be 236.");
@@ -117,7 +117,7 @@ public class Group3_5_FordFrivolous_Tests {
         FordFrivolous ford = new FordFrivolous();
         assertThrows(IllegalArgumentException.class, () -> {
             ford.fly(-1);
-        }, "Flying empty should fail.");
+        }, "Flying negative should fail.");
 
         ford.fly(0);
         assertEquals(0, ford.getMileage(), .1, "Mileage should not change when flying.");
@@ -138,10 +138,10 @@ public class Group3_5_FordFrivolous_Tests {
 
         assertThrows(IllegalArgumentException.class, () -> {
             ford.fly(5);
-        }, "Driving beyond empty should fail.");
+        }, "Flying beyond empty should fail.");
 
         assertThrows(IllegalArgumentException.class, () -> {
             ford.driveAutonomously(1);
-        }, "Driving beyond empty should fail.");
+        }, "Flying beyond empty should fail.");
     }
 }
