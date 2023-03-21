@@ -103,13 +103,11 @@ public class Group3_5_FordFrivolous_Tests {
         assertEquals(236, ford.getMileage(), .1, "Mileage should be 236.");
         assertEquals(0, ford.getRemainingRange(), 0.1,"Remaining range should be 0");
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            ford.driveAutonomously(5);
-        }, "Driving beyond empty should fail.");
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            ford.driveAutonomously(0.2);
-        }, "Driving beyond empty should fail.");
+        ford.refillTank(10);
+        assertEquals(236, ford.getRemainingRange(), 0.1,"Remaining range should be 472");
+        ford.driveAutonomously(300);
+        assertEquals(0, ford.getRemainingRange(), 0.1,"Remaining range should be 0");
+        //fixed this literally a minute after my internet cut out
     }
 
     @Test
@@ -138,10 +136,10 @@ public class Group3_5_FordFrivolous_Tests {
 
         assertThrows(IllegalArgumentException.class, () -> {
             ford.fly(5);
-        }, "Flying beyond empty should fail.");
+        }, "Flying beyond possible should fail.");
 
         assertThrows(IllegalArgumentException.class, () -> {
-            ford.driveAutonomously(1);
-        }, "Flying beyond empty should fail.");
+            ford.fly(1);
+        }, "Flying beyond possible should fail.");
     }
 }
