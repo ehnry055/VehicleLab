@@ -18,7 +18,11 @@ public class Group3_5_FordFrivolous_Tests {
         assertEquals(23.6, ford.getMPG(), 0.1, "Initial mpg not correct.");
         assertEquals(ford.getFuelCapacity() * ford.getMPG(), ford.getRemainingRange(), 0.1,
                 "Remaining range of car not correct at creation.");
+        ford.refillTank();
+        assertEquals(ford.getFuelCapacity(), ford.getFuelLevel(), "Fuel capacity not maximum.");
         assertEquals("Ford Frivolous (0.0 mi)", ford.toString(), "toString does not match");
+        assertEquals("Ford", ford.getMake(), "Make does not match Ford");
+        assertEquals("Frivolous", ford.getModel(), "Model does not match Frivolous");
     }
 
     @Test
@@ -53,12 +57,15 @@ public class Group3_5_FordFrivolous_Tests {
     @Test
     public void fordConstructorTest3() {
         FordFrivolous ford = new FordFrivolous(500);
-        assertEquals(0, ford.getMileage(), 0.1, "Mileage should be 500.");
+        assertEquals(500.0, ford.getMileage(), 0.1, "Mileage should be 500.0");
         assertEquals(20, ford.getFuelCapacity(),  0.1, "Initial fuel capacity not correct.");
         assertEquals(ford.getFuelCapacity(), ford.getFuelLevel(), 0.1, "The car should begin full.");
         assertEquals(23.6, ford.getMPG(), 0.1, "Initial mpg not correct.");
         assertEquals(ford.getFuelCapacity() * ford.getMPG(), ford.getRemainingRange(), 0.1,
                 "Remaining range of car not correct at creation.");
+
+        ford.refillTank();
+        assertEquals(ford.getFuelCapacity(), ford.getFuelLevel(), "Fuel capacity not maximum.");
         assertEquals("Ford Frivolous (500.0 mi)", ford.toString(), "toString does not match");
     
         assertTrue(ford.canDrive(30), "canDrive should be true");
@@ -86,7 +93,7 @@ public class Group3_5_FordFrivolous_Tests {
     public void fordConstructorTest4() {
         FordFrivolous ford = new FordFrivolous();
         assertThrows(IllegalArgumentException.class, () -> {
-            ford.driveAutonomously(.5);
+            ford.driveAutonomously(-1);
         }, "Driving beyond empty should fail.");
 
         ford.driveAutonomously(45);
@@ -98,6 +105,10 @@ public class Group3_5_FordFrivolous_Tests {
 
         assertThrows(IllegalArgumentException.class, () -> {
             ford.driveAutonomously(5);
+        }, "Driving beyond empty should fail.");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            ford.driveAutonomously(0.2);
         }, "Driving beyond empty should fail.");
     }
 
@@ -122,11 +133,15 @@ public class Group3_5_FordFrivolous_Tests {
 
 
         ford.fly(156);
-        assertEquals(157, ford.getMileage(), .1, "Mileage should be 157.");
+        assertEquals(0, ford.getMileage(), .1, "Mileage should be 0.");
         assertEquals(1, ford.getRemainingRange(), 0.1,"Remaining range should be 1");
 
         assertThrows(IllegalArgumentException.class, () -> {
             ford.fly(5);
+        }, "Driving beyond empty should fail.");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            ford.driveAutonomously(1);
         }, "Driving beyond empty should fail.");
     }
 }

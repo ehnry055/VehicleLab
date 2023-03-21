@@ -21,6 +21,9 @@ public abstract class GasPoweredCar extends Car {
     }
 
     public void drive(double miles) {
+        if (miles < 0 || miles > getRemainingRange()) {
+            throw new IllegalArgumentException();
+        }
         super.addMileage(miles);
         decreaseFuelLevel(miles);
     }
