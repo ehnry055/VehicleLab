@@ -55,16 +55,15 @@ public abstract class Car {
     }
     //dont know if this workssssssssss
     public int roadTrip(List<Double> milesEachDay) throws IllegalArgumentException {
-        Double remain = mlg;
         int i = 0;
         for(Double d : milesEachDay) {
             if (d < 0) {
                 throw new IllegalArgumentException();
             }
-            remain -= d;
-            if (remain < 0) {
+            if (!canDrive(d)) {
                 return i;
             }
+            drive(d);
             i++;
         }
         return i;

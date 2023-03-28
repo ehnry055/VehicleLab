@@ -2,7 +2,6 @@ package vehicle;
 
 public class TeslaModelZ extends ElectricCar implements SelfDriving{
     int modelNum;
-    double fullcharge;
     /**
      * modelNum specifies the model number. Tesla cares about that
      * stuff. Tesla Model Z’s have a 340 mile range on a full charge.
@@ -10,14 +9,13 @@ public class TeslaModelZ extends ElectricCar implements SelfDriving{
      * an additional value.
      */
     public TeslaModelZ(double startingMileage, int modelNum) {
-        super("Tesla", "Model Z", startingMileage);
+        super("Tesla", "Z" + modelNum, startingMileage, 340);
         this.modelNum = modelNum;
     }
 
     /** Defaults mileage to 0. */
     public TeslaModelZ(int modelNum) {
-        super("Tesla", "Model Z", 0);
-        this.modelNum = modelNum;
+        this(0, modelNum);
     }
 
     /** Returns the model number. */
@@ -44,8 +42,8 @@ public class TeslaModelZ extends ElectricCar implements SelfDriving{
     }
 
     public void driveAutonomously(double miles){
-        if (miles > fullcharge){
-            drive(fullcharge);
+        if (miles > getRemainingRange()){
+            drive(getRemainingRange());
         } else{
             drive(miles);
         }
