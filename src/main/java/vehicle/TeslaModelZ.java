@@ -16,6 +16,7 @@ public class TeslaModelZ extends ElectricCar implements SelfDriving{
     /** Defaults mileage to 0. */
     public TeslaModelZ(int modelNum) {
         this(0, modelNum);
+        this.modelNum = modelNum;
     }
 
     /** Returns the model number. */
